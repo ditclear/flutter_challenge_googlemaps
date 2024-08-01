@@ -16,17 +16,17 @@ class MapButton extends StatelessWidget {
   final Gradient gradient;
 
   const MapButton(
-      {Key key,
-      this.currentSearchPercent,
-      this.currentExplorePercent,
-      this.bottom,
-      this.offsetX,
-      this.width,
-      this.height,
-      this.icon,
-      this.iconColor,
+      {Key? key,
+      required this.currentSearchPercent,
+      required this.currentExplorePercent,
+      required this.bottom,
+      required this.offsetX,
+      required this.width,
+      required this.height,
+      required this.icon,
+      required this.iconColor,
       this.isRight = true,
-      this.gradient})
+      required this.gradient})
       : assert(currentExplorePercent != null),
         assert(currentExplorePercent != null),
         assert(bottom != null),
@@ -40,8 +40,12 @@ class MapButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Positioned(
       bottom: realH(bottom),
-      left: !isRight ? realW(offsetX * (currentExplorePercent + currentSearchPercent)) : null,
-      right: isRight ? realW(offsetX * (currentExplorePercent + currentSearchPercent)) : null,
+      left: !isRight
+          ? realW(offsetX * (currentExplorePercent + currentSearchPercent))
+          : null,
+      right: isRight
+          ? realW(offsetX * (currentExplorePercent + currentSearchPercent))
+          : null,
       child: Opacity(
         opacity: 1 - (currentSearchPercent + currentExplorePercent),
         child: Container(
@@ -58,10 +62,15 @@ class MapButton extends StatelessWidget {
               color: gradient == null ? Colors.white : null,
               gradient: gradient,
               borderRadius: isRight
-                  ? BorderRadius.only(bottomLeft: Radius.circular(realW(36)), topLeft: Radius.circular(realW(36)))
-                  : BorderRadius.only(bottomRight: Radius.circular(realW(36)), topRight: Radius.circular(realW(36))),
+                  ? BorderRadius.only(
+                      bottomLeft: Radius.circular(realW(36)),
+                      topLeft: Radius.circular(realW(36)))
+                  : BorderRadius.only(
+                      bottomRight: Radius.circular(realW(36)),
+                      topRight: Radius.circular(realW(36))),
               boxShadow: [
-                BoxShadow(color: Color.fromRGBO(0, 0, 0, 0.3), blurRadius: realW(36)),
+                BoxShadow(
+                    color: Color.fromRGBO(0, 0, 0, 0.3), blurRadius: realW(36)),
               ]),
         ),
       ),

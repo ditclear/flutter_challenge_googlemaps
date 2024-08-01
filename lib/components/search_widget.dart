@@ -15,20 +15,22 @@ class SearchWidget extends StatelessWidget {
   final Function() onPanDown;
 
   const SearchWidget(
-      {Key key,
-      this.currentExplorePercent,
-      this.currentSearchPercent,
-      this.animateSearch,
-      this.isSearchOpen,
-      this.onHorizontalDragUpdate,
-      this.onPanDown})
+      {Key? key,
+      required this.currentExplorePercent,
+      required this.currentSearchPercent,
+      required this.animateSearch,
+      required this.isSearchOpen,
+      required this.onHorizontalDragUpdate,
+      required this.onPanDown})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Positioned(
       bottom: realH(53),
-      right: realW((68.0 - 320) - (68.0 * currentExplorePercent) + (347 - 68.0) * currentSearchPercent),
+      right: realW((68.0 - 320) -
+          (68.0 * currentExplorePercent) +
+          (347 - 68.0) * currentSearchPercent),
       child: GestureDetector(
         onTap: () {
           animateSearch(!isSearchOpen);
@@ -54,7 +56,8 @@ class SearchWidget extends StatelessWidget {
               color: Colors.white,
               borderRadius: BorderRadius.all(Radius.circular(realW(36))),
               boxShadow: [
-                BoxShadow(color: Color.fromRGBO(0, 0, 0, 0.3), blurRadius: realW(36)),
+                BoxShadow(
+                    color: Color.fromRGBO(0, 0, 0, 0.3), blurRadius: realW(36)),
               ]),
         ),
       ),
