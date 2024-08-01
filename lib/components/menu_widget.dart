@@ -3,18 +3,28 @@ import 'package:flutter_challenge_googlemaps/helper/ui_helper.dart';
 
 /// Drawer Menu
 class MenuWidget extends StatelessWidget {
-  final menuItems = ['Home', 'Saved', 'Timeline', 'Contributions', 'Messages', 'Sharing', 'Drive Mode'];
+  final menuItems = [
+    'Home',
+    'Saved',
+    'Timeline',
+    'Contributions',
+    'Messages',
+    'Sharing',
+    'Drive Mode'
+  ];
 
-  final num currentMenuPercent;
+  final double currentMenuPercent;
   final Function(bool) animateMenu;
 
-  MenuWidget({Key key, this.currentMenuPercent, this.animateMenu}) : super(key: key);
+  MenuWidget(
+      {Key? key, required this.currentMenuPercent, required this.animateMenu})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return currentMenuPercent != 0
         ? Positioned(
-            left: realW(-358 + 358 * currentMenuPercent),
+            left: realW(-358.toDouble() + 358 * currentMenuPercent),
             width: realW(358),
             height: screenHeight,
             child: Opacity(
@@ -22,16 +32,19 @@ class MenuWidget extends StatelessWidget {
               child: Container(
                 decoration: BoxDecoration(
                   color: Colors.white,
-                  borderRadius: BorderRadius.only(topRight: Radius.circular(realW(50))),
+                  borderRadius:
+                      BorderRadius.only(topRight: Radius.circular(realW(50))),
                   boxShadow: [
-                    BoxShadow(color: Color.fromRGBO(0, 0, 0, 0.16), blurRadius: realW(20)),
+                    BoxShadow(
+                        color: Color.fromRGBO(0, 0, 0, 0.16),
+                        blurRadius: realW(20)),
                   ],
                 ),
                 child: Stack(
                   children: <Widget>[
                     NotificationListener<OverscrollIndicatorNotification>(
                       onNotification: (notification) {
-                        notification.disallowGlow();
+                        return true;
                       },
                       child: CustomScrollView(
                         physics: NeverScrollableScrollPhysics(),
@@ -40,11 +53,14 @@ class MenuWidget extends StatelessWidget {
                             child: Container(
                               height: realH(236),
                               decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.only(topRight: Radius.circular(realW(50))),
-                                  gradient: const LinearGradient(begin: Alignment.topLeft, colors: [
-                                    Color(0xFF59C2FF),
-                                    Color(0xFF1270E3),
-                                  ])),
+                                  borderRadius: BorderRadius.only(
+                                      topRight: Radius.circular(realW(50))),
+                                  gradient: const LinearGradient(
+                                      begin: Alignment.topLeft,
+                                      colors: [
+                                        Color(0xFF59C2FF),
+                                        Color(0xFF1270E3),
+                                      ])),
                               child: Stack(
                                 children: <Widget>[
                                   Positioned(
@@ -72,21 +88,28 @@ class MenuWidget extends StatelessWidget {
                                       style: TextStyle(color: Colors.white),
                                       child: Column(
                                         mainAxisSize: MainAxisSize.min,
-                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
                                         children: <Widget>[
                                           Text(
                                             "implemented by ditclear",
-                                            style: TextStyle(fontWeight: FontWeight.bold, fontSize: realW(18)),
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: realW(18)),
                                           ),
                                           Padding(
-                                            padding: EdgeInsets.symmetric(vertical: realH(11.0)),
+                                            padding: EdgeInsets.symmetric(
+                                                vertical: realH(11.0)),
                                             child: FittedBox(
                                               fit: BoxFit.scaleDown,
                                               child: Text.rich(
                                                 TextSpan(
-                                                  text: "https://github.com/ditclear",
+                                                  text:
+                                                      "https://github.com/ditclear",
                                                   style: TextStyle(
-                                                      fontSize: realW(16), decoration: TextDecoration.underline),
+                                                      fontSize: realW(16),
+                                                      decoration: TextDecoration
+                                                          .underline),
                                                 ),
                                               ),
                                             ),
@@ -95,7 +118,8 @@ class MenuWidget extends StatelessWidget {
                                             children: <Widget>[
                                               Text(
                                                 "公众号：ditclear",
-                                                style: TextStyle(fontSize: realW(14)),
+                                                style: TextStyle(
+                                                    fontSize: realW(14)),
                                               ),
                                               Icon(
                                                 Icons.arrow_right,
@@ -113,10 +137,14 @@ class MenuWidget extends StatelessWidget {
                             ),
                           ),
                           SliverPadding(
-                            padding: EdgeInsets.only(top: realH(34), bottom: realH(50), right: realW(37)),
+                            padding: EdgeInsets.only(
+                                top: realH(34),
+                                bottom: realH(50),
+                                right: realW(37)),
                             sliver: SliverFixedExtentList(
                               itemExtent: realH(56),
-                              delegate: new SliverChildBuilderDelegate((BuildContext context, int index) {
+                              delegate: new SliverChildBuilderDelegate(
+                                  (BuildContext context, int index) {
                                 //创建列表项
                                 return Container(
                                   width: realW(321),
@@ -124,15 +152,21 @@ class MenuWidget extends StatelessWidget {
                                   padding: EdgeInsets.only(left: realW(20)),
                                   decoration: index == 0
                                       ? BoxDecoration(
-                                          color: Color(0xFF379BF2).withOpacity(0.2),
+                                          color: Color(0xFF379BF2)
+                                              .withOpacity(0.2),
                                           borderRadius: BorderRadius.only(
-                                              topRight: Radius.circular(realW(50)),
-                                              bottomRight: Radius.circular(realW(50))))
+                                              topRight:
+                                                  Radius.circular(realW(50)),
+                                              bottomRight:
+                                                  Radius.circular(realW(50))))
                                       : null,
                                   child: Text(
                                     menuItems[index],
-                                    style:
-                                        TextStyle(color: index == 0 ? Colors.blue : Colors.black, fontSize: realW(20)),
+                                    style: TextStyle(
+                                        color: index == 0
+                                            ? Colors.blue
+                                            : Colors.black,
+                                        fontSize: realW(20)),
                                   ),
                                 );
                               }, childCount: menuItems.length),
@@ -143,7 +177,8 @@ class MenuWidget extends StatelessWidget {
                             sliver: SliverToBoxAdapter(
                               child: Text(
                                 'Settings',
-                                style: TextStyle(color: Colors.black, fontSize: realW(20)),
+                                style: TextStyle(
+                                    color: Colors.black, fontSize: realW(20)),
                               ),
                             ),
                           )
@@ -171,7 +206,8 @@ class MenuWidget extends StatelessWidget {
                           decoration: BoxDecoration(
                             color: Color(0xFFFB5E74).withOpacity(0.2),
                             borderRadius: BorderRadius.only(
-                                bottomLeft: Radius.circular(realW(36)), topLeft: Radius.circular(realW(36))),
+                                bottomLeft: Radius.circular(realW(36)),
+                                topLeft: Radius.circular(realW(36))),
                           ),
                         ),
                       ),

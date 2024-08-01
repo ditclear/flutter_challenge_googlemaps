@@ -4,7 +4,8 @@ import 'package:flutter_challenge_googlemaps/helper/ui_helper.dart';
 class SearchMenuWidget extends StatelessWidget {
   final double currentSearchPercent;
 
-  const SearchMenuWidget({Key key, this.currentSearchPercent}) : super(key: key);
+  const SearchMenuWidget({Key? key, required this.currentSearchPercent})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {

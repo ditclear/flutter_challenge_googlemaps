@@ -5,8 +5,8 @@ final standardWidth = 375.0;
 final standardHeight = 815.0;
 
 /// late init
-double screenWidth;
-double screenHeight;
+double screenWidth = 0.0;
+double screenHeight = 0.0;
 
 /// scale [height] by [standardHeight]
 double realH(double height) {

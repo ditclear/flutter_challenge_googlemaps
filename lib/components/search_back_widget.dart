@@ -6,7 +6,11 @@ class SearchBackWidget extends StatelessWidget {
 
   final Function(bool) animateSearch;
 
-  const SearchBackWidget({Key key, this.currentSearchPercent, this.animateSearch}) : super(key: key);
+  const SearchBackWidget(
+      {Key? key,
+      required this.currentSearchPercent,
+      required this.animateSearch})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {

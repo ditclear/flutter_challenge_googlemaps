@@ -3,14 +3,20 @@ import 'package:flutter_challenge_googlemaps/helper/ui_helper.dart';
 
 class ExploreContentWidget extends StatelessWidget {
   final double currentExplorePercent;
-  final placeName = const ["Authentic\nrestaurant", "Famous\nmonuments", "Weekend\ngetaways"];
-  const ExploreContentWidget({Key key, this.currentExplorePercent}) : super(key: key);
+  final placeName = const [
+    "Authentic\nrestaurant",
+    "Famous\nmonuments",
+    "Weekend\ngetaways"
+  ];
+  const ExploreContentWidget({Key? key, required this.currentExplorePercent})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     if (currentExplorePercent != 0) {
       return Positioned(
-        top: realH(standardHeight + (162 - standardHeight) * currentExplorePercent),
+        top: realH(
+            standardHeight + (162 - standardHeight) * currentExplorePercent),
         width: screenWidth,
         child: Container(
           height: screenHeight,
@@ -25,7 +31,8 @@ class ExploreContentWidget extends StatelessWidget {
                   children: <Widget>[
                     Expanded(
                       child: Transform.translate(
-                        offset: Offset(screenWidth / 3 * (1 - currentExplorePercent),
+                        offset: Offset(
+                            screenWidth / 3 * (1 - currentExplorePercent),
                             screenWidth / 3 / 2 * (1 - currentExplorePercent)),
                         child: Image.asset(
                           "assets/icon_1.png",
@@ -43,7 +50,8 @@ class ExploreContentWidget extends StatelessWidget {
                     ),
                     Expanded(
                       child: Transform.translate(
-                        offset: Offset(-screenWidth / 3 * (1 - currentExplorePercent),
+                        offset: Offset(
+                            -screenWidth / 3 * (1 - currentExplorePercent),
                             screenWidth / 3 / 2 * (1 - currentExplorePercent)),
                         child: Image.asset(
                           "assets/icon_3.png",
@@ -56,12 +64,14 @@ class ExploreContentWidget extends StatelessWidget {
                 ),
               ),
               Transform.translate(
-                  offset: Offset(0, realH(23 + 380 * (1 - currentExplorePercent))),
+                  offset:
+                      Offset(0, realH(23 + 380 * (1 - currentExplorePercent))),
                   child: Opacity(
                       opacity: currentExplorePercent,
                       child: Container(
                         width: screenWidth,
-                        height: realH(172 + (172 * 4 * (1 - currentExplorePercent))),
+                        height: realH(
+                            172 + (172 * 4 * (1 - currentExplorePercent))),
                         child: ListView(
                           physics: const BouncingScrollPhysics(),
                           scrollDirection: Axis.horizontal,
@@ -79,7 +89,8 @@ class ExploreContentWidget extends StatelessWidget {
                         ),
                       ))),
               Transform.translate(
-                  offset: Offset(0, realH(58 + 570 * (1 - currentExplorePercent))),
+                  offset:
+                      Offset(0, realH(58 + 570 * (1 - currentExplorePercent))),
                   child: Opacity(
                     opacity: currentExplorePercent,
                     child: Padding(
@@ -91,8 +102,10 @@ class ExploreContentWidget extends StatelessWidget {
                           Padding(
                             padding: EdgeInsets.only(left: realW(22)),
                             child: Text("EVENTS",
-                                style:
-                                    const TextStyle(color: Colors.white54, fontSize: 13, fontWeight: FontWeight.bold)),
+                                style: const TextStyle(
+                                    color: Colors.white54,
+                                    fontSize: 13,
+                                    fontWeight: FontWeight.bold)),
                           ),
                           Stack(
                             children: <Widget>[
@@ -104,12 +117,17 @@ class ExploreContentWidget extends StatelessWidget {
                                   left: realW(24),
                                   child: Text(
                                     "Marshmello Live in Concert",
-                                    style: TextStyle(color: Colors.white, fontSize: realW(16)),
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: realW(16)),
                                   ))
                             ],
                           ),
                           Transform.translate(
-                            offset: Offset(0, realH(30 - 30 * (currentExplorePercent - 0.75) * 4)),
+                            offset: Offset(
+                                0,
+                                realH(30 -
+                                    30 * (currentExplorePercent - 0.75) * 4)),
                             child: Row(
                               children: <Widget>[
                                 Expanded(
